@@ -37,4 +37,4 @@ const Content = () => {
       </div>
    );
 }
-export default Cantent
+export default Content
