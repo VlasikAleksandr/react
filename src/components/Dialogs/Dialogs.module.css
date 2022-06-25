@@ -1,0 +1,14 @@
+.dialogs {
+   display: grid;
+   grid-template-columns: 2fr 10fr;
+   height: 100%;
+   /* position: relative; */
+}
+.dialogsItem {
+   border-right: 4px solid black;
+}
+/* .text {
+   position: absolute;
+   left: 0;
+   bottom: 0;
+} */
