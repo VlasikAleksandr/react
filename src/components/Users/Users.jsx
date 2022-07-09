@@ -2,21 +2,13 @@ import React from 'react';
 import s from './Users.module.css';
 import userPhoto from '../../assets/imeges/user.png'
 import { NavLink } from 'react-router-dom';
-import { follow, unfollow, } from '../../redux/users-reduser'
+import Paginator from '../common/Paginator/Paginator';
 
-let Users = (props) => {
-   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
-
-   let pages = []
-   for (let i = 1; i <= pagesCount; i++) {
-      pages.push(i)
-   }
+let Users = ({currentPage, onPageChanget, totalUsersCount, pageSize, ...props}) => {
    return (
       <div className={s.wrap}>
-         {pages.map(p => {
-            return <span className={props.currentPage === p && s.selectedPage}
-               onClick={(e) => { props.onPageChanget(p) }}>{p}</span>
-         })}
+         <Paginator currentPage={currentPage} onPageChanget={onPageChanget}
+                    totalUsersCount={totalUsersCount} pageSize={pageSize} />
          {
             props.users.map(u => <div key={u.id}>
                <span>
