@@ -1,5 +1,6 @@
 
 import s from './FormsControls.module.css'
+import React from 'react';
 
 
 const FormControl = ({ input, meta, ...props }) => {

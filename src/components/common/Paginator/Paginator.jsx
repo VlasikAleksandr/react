@@ -1,4 +1,5 @@
 import s from './Paginator.module.css'
+import React from 'react';
 import {useState} from 'react';
 import cn from 'classnames';
 
