@@ -1,11 +1,44 @@
 
 import like from '../assets/imeges/like.png'
 import images from '../assets/imeges/images.jpg'
-import { profileAPI, usersAPI } from '../../src/api/api';
+import { profileAPI, usersAPI } from '../api/api';
 
 const ADD_POST = 'ADD-POST'
 const SET_USER_PROFILE = 'SET-USER-PROFILE'
 const SET_STATUS = 'SET-STATUS'
+
+type PostsType = {
+   id:number
+   message:string
+   like:any
+   likesCount:number
+   avatar:any
+}
+
+type ContactsType ={
+   github:string
+   vk:string
+   facebook:string
+   instagram:string
+   twitter:string
+   website:string
+   youtube:string
+   mainLink:string   
+}
+type PhotosType ={
+   small:string|null
+   large:string|null
+}
+
+type ProfileType ={
+   userId:number
+   lookingForAJob:boolean
+   lookingForAJobDescription:string
+   fullName:string
+   contacts:ContactsType
+   photos:PhotosType
+
+}
 
 let initialState = {
    posts: [
@@ -37,12 +70,14 @@ let initialState = {
          likesCount: 11,
          avatar: images
       }
-   ],
-   profile: null,
-   status: ''
+   ] as Array<PostsType>,
+   profile: null as ProfileType|null,
+   status: '',
+   newPostText: ''
 }
+export type InitialStateType = typeof initialState
 
-const profileReduser = (state = initialState, action) => {
+const profileReduser = (state = initialState, action:any): InitialStateType => {
    switch (action.type) {
       case ADD_POST:
          let newPost = {
@@ -73,24 +108,34 @@ const profileReduser = (state = initialState, action) => {
    }
 }
 
-export let addPostActionCreator = (newPostText) => ({
-   type: ADD_POST, newPostText
-})
+type AddPostActionCreatorType = {
+   type : typeof ADD_POST
+   newPostText: string
+}
+type SetUserProfileType= {
+   type : typeof SET_USER_PROFILE
+   profile: ProfileType
+}
+type SetStatusType = {
+   type : typeof SET_STATUS
+   status: string
+}
 
-export let setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
-export let setStatus = (status) => ({ type: SET_STATUS, status })
+export let addPostActionCreator = (newPostText:string): AddPostActionCreatorType => ({type: ADD_POST, newPostText})
+export let setUserProfile = (profile: ProfileType):SetUserProfileType => ({ type: SET_USER_PROFILE, profile })
+export let setStatus = (status:string):SetStatusType => ({ type: SET_STATUS, status })
 
-export const getUserProfile = (userId) => async (dispatch) => {
+export const getUserProfile = (userId:number) => async (dispatch:any) => {
    let response = await usersAPI.getProfile(userId)
    dispatch(setUserProfile(response.data))
       
 }
 
-export const getStatus = (userId) => async(dispatch) => {
+export const getStatus = (userId:number) => async(dispatch:any) => {
    let response = await profileAPI.getStatus(userId)
    dispatch(setStatus(response.data))
 }
-export const updateStatus = (status) => async(dispatch) => {
+export const updateStatus = (status:string) => async(dispatch:any) => {
    let response = await profileAPI.updateStatus(status)
       if (response.data.resultCode === 0) {
             dispatch(setStatus(status))
