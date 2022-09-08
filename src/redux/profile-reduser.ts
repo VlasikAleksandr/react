@@ -2,43 +2,11 @@
 import like from '../assets/imeges/like.png'
 import images from '../assets/imeges/images.jpg'
 import { profileAPI, usersAPI } from '../api/api';
+import {PostsType, ProfileType} from '../types/types'
 
 const ADD_POST = 'ADD-POST'
 const SET_USER_PROFILE = 'SET-USER-PROFILE'
 const SET_STATUS = 'SET-STATUS'
-
-type PostsType = {
-   id:number
-   message:string
-   like:any
-   likesCount:number
-   avatar:any
-}
-
-type ContactsType ={
-   github:string
-   vk:string
-   facebook:string
-   instagram:string
-   twitter:string
-   website:string
-   youtube:string
-   mainLink:string   
-}
-type PhotosType ={
-   small:string|null
-   large:string|null
-}
-
-type ProfileType ={
-   userId:number
-   lookingForAJob:boolean
-   lookingForAJobDescription:string
-   fullName:string
-   contacts:ContactsType
-   photos:PhotosType
-
-}
 
 let initialState = {
    posts: [

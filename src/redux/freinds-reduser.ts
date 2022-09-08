@@ -1,4 +1,11 @@
 
+
+type FreindType = {
+   id: number
+   name: string
+   avatar:string
+}
+
 let initialState = {
    freind: [
       {
@@ -16,10 +23,12 @@ let initialState = {
          name: 'Dima',
          avatar: 'https://avatars.mds.yandex.net/i?id=20f1c97914d7253f53a25fc719c4b4f5-5855963-images-thumbs&n=13&exp=1'
       }
-   ]
+   ] as Array<FreindType>
 }
+ 
+type InitialStateType =  typeof initialState
 
-const freindsReduser = (state = initialState, action) => {
+const freindsReduser = (state = initialState, action:any):InitialStateType => {
    return state;
 }
 
