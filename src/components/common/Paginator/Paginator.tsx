@@ -3,7 +3,16 @@ import React from 'react';
 import {useState} from 'react';
 import cn from 'classnames';
 
-let Paginator = ({currentPage, onPageChanget, totalUsersCount, pageSize, portionSize=10}) => {
+
+type Props = {
+    currentPage:number
+    onPageChanget:(pageNumber:number)=>void
+    totalUsersCount:number 
+    pageSize:number
+    portionSize?: number
+}
+
+let Paginator: React.FC<Props> = ({currentPage, onPageChanget, totalUsersCount, pageSize, portionSize=10}) => {
     let pagesCount = Math.ceil(totalUsersCount / pageSize)
     let pages = []
     for (let i = 1; i <= pagesCount; i++) {

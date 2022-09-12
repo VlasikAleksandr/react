@@ -2,16 +2,28 @@
 import React from 'react';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
+import { UsersType } from '../../types/types';
 
+ export type PropsType = {
+   currentPage:number 
+   pageSize:number
+   isFetching:boolean
+   totalUsersCount:number
+   followingInProgress:Array<number>
+   users:Array<UsersType>
+   unfollow:()=>void
+   follow:()=>void
+   requestUsers:(currentPage:number,pageSize:number)=>void
+   
+}
 
-
-class UsersAPIComponent extends React.Component {
+class UsersAPIComponent extends React.Component<PropsType> {
 
    componentDidMount() {
       this.props.requestUsers(this.props.currentPage, this.props.pageSize)
    }
 
-   onPageChanget = (pageNumber) => {
+   onPageChanget = (pageNumber:number) => {
       this.props.requestUsers(pageNumber, this.props.pageSize)
    }
 
@@ -24,7 +36,7 @@ class UsersAPIComponent extends React.Component {
             onPageChanget={this.onPageChanget}
             users={this.props.users}
             follow={this.props.follow}
-            unFollow={this.props.unFollow}
+            unfollow={this.props.unfollow}
             followingInProgress={this.props.followingInProgress} />
       </>
    }
