@@ -4,18 +4,24 @@ import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
 import { UsersType } from '../../types/types';
 
- export type PropsType = {
+
+export type MapStatePropsType = {
    currentPage:number 
    pageSize:number
    isFetching:boolean
    totalUsersCount:number
    followingInProgress:Array<number>
    users:Array<UsersType>
-   unfollow:()=>void
-   follow:()=>void
-   requestUsers:(currentPage:number,pageSize:number)=>void
-   
 }
+export type MapDispatchPropsType = {
+   unfollow:(userId:number)=>void
+   follow:(userId:number)=>void
+   requestUsers:(currentPage:number,pageSize:number)=>void
+}
+
+
+
+ export type PropsType = MapStatePropsType & MapDispatchPropsType
 
 class UsersAPIComponent extends React.Component<PropsType> {
 

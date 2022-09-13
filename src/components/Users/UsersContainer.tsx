@@ -10,12 +10,12 @@ import {
    getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize,
    getTotalUsersCount, getUsers
 } from '../../redux/users-selectors';
-import UsersAPIComponent from './UsersAPIComponent';
+import UsersAPIComponent, { MapStatePropsType } from './UsersAPIComponent';
 import PropsType from './UsersAPIComponent';
 
 
 
-let mapStateToProps = (state:AppStateType) => {
+let mapStateToProps = (state:AppStateType):MapStatePropsType => {
    return {
       users: getUsers(state),
       pageSize: getPageSize(state),
@@ -26,11 +26,12 @@ let mapStateToProps = (state:AppStateType) => {
    }
 }
 
-export default compose<React.Component<PropsType>>(connect(mapStateToProps, {
-   follow,
-   unfollow,
-   setCurrentPage,
-   toggeleFollowingProgress,
-   requestUsers
+export default compose<React.Component<PropsType>>(
+   connect(mapStateToProps, {
+         follow,
+         unfollow,
+         setCurrentPage,
+         toggeleFollowingProgress,
+         requestUsers
 }))(UsersAPIComponent)
 

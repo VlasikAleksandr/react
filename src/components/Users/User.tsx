@@ -2,9 +2,17 @@ import userPhoto from '../../assets/imeges/user.png'
 import { NavLink } from 'react-router-dom';
 import s from './Users.module.css';
 import React from 'react';
+import { UsersType } from '../../types/types';
+
+type UserPropsType={
+   user:UsersType
+   followingInProgress:Array<number>
+   unfollow:(userId:number)=>void
+   follow:(userId:number)=>void
+}
 
 
-const User = ({user, followingInProgress, unfollow, follow}) => {
+const User: React.FC<UserPropsType> = ({user, followingInProgress, unfollow, follow}) => {
     return (
        <div className={s.wrap}>
             <span>
