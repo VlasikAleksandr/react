@@ -4,7 +4,7 @@ import s from './Avatar.module.css'
 import images from '../../../assets/imeges/images.jpg'
 
 
-const Avatar = (props) => {
+const Avatar:React.FC = (props) => {
 
    // if (!props.props) {
    //    return <Preloader />

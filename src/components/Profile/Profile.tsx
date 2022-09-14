@@ -1,18 +1,26 @@
 import React from 'react';
+import { ProfileType } from '../../types/types';
 import Avatar from './Avatar/Avatar';
 import ProfileStatus from './Avatar/ProfileStatus';
 import FirstImage from './FirstImage/FirstImage';
 import MyPostContainer from './MyPost/MyPostContainer';
 import s from './Profile.module.css'
 
-const Profile = (props) => {
+export type ProfilePropsType = {
+   profile:ProfileType|null
+   status: string
+   updateStatus:(status:string)=>void
+}
+
+
+const Profile: React.FC<ProfilePropsType> = (props) => {
 
    return (
       <div className={s.content}>
          <FirstImage />
-         <Avatar props={props.profile} />
+         <Avatar/>
          <ProfileStatus status={props.status}
-            updateStatus={props.updateStatus} />
+            updeteStatus={props.updateStatus} />
          <MyPostContainer />
       </div>
    );
