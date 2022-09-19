@@ -37,3 +37,8 @@ export type PostsType = {
     status:string
     followed:boolean
  }
+ export  type FreindType = {
+   id: number
+   name: string
+   avatar:string
+}

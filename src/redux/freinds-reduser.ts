@@ -1,10 +1,5 @@
 
-
-type FreindType = {
-   id: number
-   name: string
-   avatar:string
-}
+import {FreindType} from '../types/types' 
 
 let initialState = {
    freind: [

@@ -1,10 +1,10 @@
 
-import React from 'react';
+import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
-import FreindContainer from '../Nav/Freinds/FreindsContainer';
+import FreindContainer from './Freinds/FreindsContainer';
 import s from './Nav.module.css';
 // className={navData => navData.isActive ? s.active : ''
-const Nav = (props) => {
+const Nav:FC = () => {
    return (
       <nav className={s.navigation}>
          <div className={s.navigationLink}>
@@ -27,7 +27,7 @@ const Nav = (props) => {
          </div>
          <div className={s.freinds}>
             <h3>Freinds</h3>
-            <FreindContainer />
+            <FreindContainer/>
          </div>
       </nav>
    );
